@@ -7,7 +7,6 @@ export const EventsSchema = new SimpleSchema({
   _id: {
     label: 'Event id',
     type: 'String',
-    index: true,
   },
   shortName: {
     label: 'Short name for the event',

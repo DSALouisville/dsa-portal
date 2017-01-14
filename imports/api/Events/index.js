@@ -1,11 +1,11 @@
 import { Meteor } from 'meteor/meteor';
+import { Mongo } from 'meteor/mongo';
 import { EventsSchema } from './schema';
 
-Meteor.events.attachSchema(EventsSchema);
-
-export const Events = Meteor.evemts || {};
+export const Events = new Mongo.Collection('events');
 export default Events;
 
 Events.name = 'Events';
+Events.attachSchema(EventsSchema);
 
 
