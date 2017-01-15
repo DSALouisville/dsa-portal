@@ -8,4 +8,11 @@ export default Events;
 Events.name = 'Events';
 Events.attachSchema(EventsSchema);
 
+if (Meteor.isServer) {
+  // This code only runs on the server
+  Meteor.publish('events', function eventsPublication() {
+    return Events.find();
+  });
+}
+
 
