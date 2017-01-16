@@ -3,6 +3,7 @@
 //
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { CheckListsSchema } from '../CheckLists/schema';
+import Enums from '../Enums';
 
 export const EventsSchema = new SimpleSchema({
   _id: {
@@ -29,6 +30,10 @@ export const EventsSchema = new SimpleSchema({
     label: 'Todo list for event',
     type: CheckListsSchema,
     optional: true,
-  }
+  },
+  type: {
+    label: 'Type of event',
+    type: Enums.Events.types,
+  },
 
 });

@@ -14,6 +14,7 @@ if (Meteor.isServer) {
         console.log('added');
         const newEvent = {
           _id: 'remove',
+          type: 0,
           shortName: 'Test Event',
           fullName: 'Big Time Testing Blowout',
           startTime: '2017-01-01 01:10:54',
@@ -44,6 +45,7 @@ if (Meteor.isServer) {
           Events.remove({_id: 'findMe'});
           const newEvent = {
             _id: 'findMe',
+          type: 0,
             shortName: 'Test Event',
             fullName: 'Big Time Testing Blowout',
             startTime: '2017-01-01 01:10:54',

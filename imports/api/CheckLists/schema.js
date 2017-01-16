@@ -7,6 +7,11 @@ export const CheckListsSchema = new SimpleSchema({
     label: 'CheckList id',
     type: String,
   },
+  name: {
+    label: 'Name for the checklist',
+    type: String,
+    optional: true,
+  },
   tasks: {
     label: 'List of Tasks on this checklist',
     type: [TasksSchema]
@@ -14,5 +19,11 @@ export const CheckListsSchema = new SimpleSchema({
   status: {
     label: 'Current status of the CheckList',
     type: Enums.CheckLists.statuses,
+  },
+  completionRate: {
+    label: 'Fraction of tasks completed',
+    type: Number,
+    decimal: true,
+    optional: true,
   },
 });
