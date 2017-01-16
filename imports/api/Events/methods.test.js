@@ -41,7 +41,18 @@ if (Meteor.isServer) {
       });
       describe('Events.findOne', () => {
         it('Finds one event', () => {
-          expect(Meteor.call('Events.findOne', { _id: 'remove' }).shortName).to.equal('Test Event');
+          Events.remove({_id: 'findMe'});
+          const newEvent = {
+            _id: 'findMe',
+            shortName: 'Test Event',
+            fullName: 'Big Time Testing Blowout',
+            startTime: '2017-01-01 01:10:54',
+            endTime: '2017-01-05 05:15:54',
+          };
+          Meteor.call('Events.add', newEvent);
+          Meteor.call('Events.findOne', { _id: 'findMe' }, (err, result) => {
+            expect(result.shortName).to.equal('Test Event');
+          });
         });
       });
     });

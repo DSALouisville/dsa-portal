@@ -1,7 +1,5 @@
 import Events from './';
 
-console.log('event methods');
-
 const addEvent = (eventObj) => {
   Events.insert(eventObj);
 };

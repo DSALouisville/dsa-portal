@@ -41,6 +41,3 @@ export default class EventForm extends React.Component {
     );
   }
 }
-EventForm.propTypes = {
-  onSubmit: React.PropTypes.func,
-};

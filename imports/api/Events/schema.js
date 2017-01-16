@@ -2,6 +2,7 @@
 // import moment from 'moment-timezone';
 //
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import { CheckListsSchema } from '../CheckLists/schema';
 
 export const EventsSchema = new SimpleSchema({
   _id: {
@@ -24,5 +25,10 @@ export const EventsSchema = new SimpleSchema({
     label: 'End time of the event',
     type: Date,
   },
+  checkList: {
+    label: 'Todo list for event',
+    type: CheckListsSchema,
+    optional: true,
+  }
 
 });
