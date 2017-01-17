@@ -2,37 +2,31 @@ import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import { Combobox, DateTimePicker, DropdownList } from 'react-widgets';
 
-export default class EventForm extends React.Component {
+export default class TaskForm extends React.Component {
   submit() {
     console.log(this.state);
-    Meteor.call('Events.add', this.state);
+    Meteor.call('Tasks.add', this.state);
   }
   render() {
     return (
       <div className="event-form">
-        Full Title of Event
+        Name of task
         <Combobox
-          name="fullName"
-          onChange={ value => this.setState({ fullName: value }) }
+          name="name"
+          onChange={ value => this.setState({ name: value }) }
           open={false}
         />
-        Short Title of Event
+        Description
         <Combobox
-          name="shortName"
-          onChange={ value => this.setState({ shortName: value }) }
+          name="description"
+          onChange={ value => this.setState({ description: value }) }
           open={false}
         />
-        Start Time
+        Due Date
         <DateTimePicker
           defaultValue={ new Date() }
-          onChange={ value => this.setState({ startTime: value }) }
-          name="startDate"
-        />
-        End Time
-        <DateTimePicker
-          defaultValue={ new Date() }
-          name={ 'endDate' }
-          onChange={ value => this.setState({ endTime: value }) }
+          onChange={ value => this.setState({ dueDate: value }) }
+          name="dueDate"
         />
         Type
         <DropdownList
@@ -49,3 +43,4 @@ export default class EventForm extends React.Component {
     );
   }
 }
+

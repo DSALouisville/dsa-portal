@@ -4,6 +4,7 @@ import Reorder from 'react-reorder';
 import '../../api/Events/methods';
 import EventCard from '../Events/components/EventCard';
 import EventForm from '../Events/components/EventForm';
+import TaskForm from '../Tasks/components/TaskForm';
 import Events from '../../api/Events/';
 import { createContainer } from 'meteor/react-meteor-data';
 
@@ -28,6 +29,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
+        <h1> Events </h1>
         <div className="row">
           <div className="event-form-containter six columns">
             <EventForm/>
@@ -36,6 +38,15 @@ class App extends React.Component {
             {this.renderEvents()}
           </div>
         </div>
+        <hr/>
+        <h1> Tasks </h1>
+        <div className="row">
+          <div className="six columns">
+            <TaskForm/>
+          </div>
+        </div>
+        <hr/>
+        <h1>Checklists</h1>
       </div>
     );
   }
