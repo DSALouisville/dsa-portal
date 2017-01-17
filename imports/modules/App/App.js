@@ -17,7 +17,7 @@ class App extends React.Component {
         template={ React.createClass({
           render: function () {
             return ( React.createElement( EventCard, {
-              event: this.props.item
+              event: this.props.item,
             }));
           }
         }) }

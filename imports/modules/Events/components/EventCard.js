@@ -3,7 +3,8 @@ import React from 'react';
 export default class EventCard extends React.Component {
   render() {
     return (
-      <div className="event-card">
+      <div className="event card">
+        <div className="complete-color"></div>
         <div className="card-text">
           {this.props.event.fullName}
         </div>
