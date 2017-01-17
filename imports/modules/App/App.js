@@ -13,6 +13,7 @@ class App extends React.Component {
     return (
       <Reorder
         itemKey='_id'
+        holdTime='250'
         list={ this.props.events }
         template={ React.createClass({
           render: function () {
