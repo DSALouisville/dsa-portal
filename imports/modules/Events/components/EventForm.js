@@ -14,13 +14,11 @@ export default class EventForm extends React.Component {
         <Combobox
           name="fullName"
           onChange={ value => this.setState({ fullName: value }) }
-          open={false}
         />
         Short Title of Event
         <Combobox
           name="shortName"
           onChange={ value => this.setState({ shortName: value }) }
-          open={false}
         />
         Start Time
         <DateTimePicker

@@ -2,10 +2,14 @@
 // import moment from 'moment-timezone';
 //
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import { Match } from 'meteor/check';
 import { CheckListsSchema } from '../CheckLists/schema';
 import Enums from '../Enums';
 
-export const EventsSchema = new SimpleSchema({
+SimpleSchema.extendOptions({
+  card: Match.Optional(Boolean),
+});
+export const EventsConfig = {
   _id: {
     label: 'Event id',
     type: 'String',
@@ -13,6 +17,7 @@ export const EventsSchema = new SimpleSchema({
   shortName: {
     label: 'Short name for the event',
     type: String,
+    card: true,
   },
   fullName: {
     label: 'Full name for the event',
@@ -21,10 +26,12 @@ export const EventsSchema = new SimpleSchema({
   startTime: {
     label: 'Start time of the event',
     type: Date,
+    card: true,
   },
   endTime: {
     label: 'End time of the event',
     type: Date,
+    card: true,
   },
   checkList: {
     label: 'Todo list for event',
@@ -35,5 +42,6 @@ export const EventsSchema = new SimpleSchema({
     label: 'Type of event',
     type: Enums.Events.types,
   },
+};
 
-});
+export const EventsSchema = new SimpleSchema(EventsConfig);

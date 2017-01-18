@@ -2,30 +2,20 @@ import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import Reorder from 'react-reorder';
 import '../../api/Events/methods';
-import EventCard from '../Events/components/EventCard';
+import { EventsConfig } from '../../api/Events/schema';
+import Card from './Card';
+// import CheckListCard from '../CheckLists/components/CheckListCard';
+// import TaskCard from '../Tasks/components/TaskCard';
 import EventForm from '../Events/components/EventForm';
 import TaskForm from '../Tasks/components/TaskForm';
 import Events from '../../api/Events/';
+import CheckLists from '../../api/CheckLists/';
+import Tasks from '../../api/Tasks/';
+import CardList from './CardList';
 import { createContainer } from 'meteor/react-meteor-data';
 
 // App component - represents the whole app
 class App extends React.Component {
-  renderEvents() {
-    return (
-      <Reorder
-        itemKey='_id'
-        holdTime='250'
-        list={ this.props.events }
-        template={ React.createClass({
-          render: function () {
-            return ( React.createElement( EventCard, {
-              event: this.props.item,
-            }));
-          }
-        }) }
-      />
-    );
-  }
   render() {
     return (
       <div className="container">
@@ -35,13 +25,17 @@ class App extends React.Component {
             <EventForm/>
           </div>
           <div className="event-list-container six columns">
-            {this.renderEvents()}
+            <CardList
+              coll={'Events'}
+              schema={ EventsConfig }
+              list={this.props.events}
+            />
           </div>
         </div>
         <hr/>
         <h1> Tasks </h1>
         <div className="row">
-          <div className="six columns">
+          <div className="task-form-container six columns">
             <TaskForm/>
           </div>
         </div>
@@ -56,7 +50,12 @@ App.propTypes = {
 };
 export default createContainer(() => {
   Meteor.subscribe('events');
+  Meteor.subscribe('checklists');
+  Meteor.subscribe('tasks');
+
   return {
     events: Events.find({}).fetch(),
+    checklists: CheckLists.find({}).fetch(),
+    tasks: Tasks.find({}).fetch(),
   };
 }, App);
