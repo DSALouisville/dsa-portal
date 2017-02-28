@@ -1,6 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { Events } from '../imports/api/Events';
 import '../imports/api/Events/methods.js';
+import '../imports/api/Tasks/methods.js';
+import '../imports/api/App/methods';
 
 Meteor.startup(() => {
   // code to run on server at startup
