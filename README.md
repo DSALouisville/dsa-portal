@@ -8,4 +8,4 @@ Meteor app manages data shared across functionality.
   * todos
   * RRN management
   * RRN execution
-  *...?
+  * ...?
